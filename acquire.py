@@ -10,7 +10,7 @@ def get_connection(db, user=user, host=host, password=password):
 
 def new_world_data():
     
-    sql_query = 'SELECT Code, country.Name as countryname, Continent, Region, SurfaceArea, country.Population as countrypopulation, LifeExpectancy, GNP, city.name as cityname, city.population as citypopulation FROM country JOIN city on country.code = city.countrycode'
+    sql_query = 'SELECT country.Name as countryname, Continent as continent, Region as region, SurfaceArea as surfacearea, country.Population as countrypopulation, LifeExpectancy as lifeexpectancy, GNP as gnp, city.name as cityname, city.population as citypopulation FROM country JOIN city on country.code = city.countrycode'
     df = pd.read_sql(sql_query, get_connection('world'))
     df.to_csv('country.csv')
     return df
